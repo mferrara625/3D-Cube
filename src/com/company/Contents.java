@@ -37,7 +37,6 @@ public class Contents extends JPanel implements ActionListener {
                 event.consume();
             }
             if(event.getKeyChar()== 'z'){
-//                if((v - x) < a)
                 vV = -1;
             }
             if(event.getKeyChar()== 'x'){
@@ -48,6 +47,18 @@ public class Contents extends JPanel implements ActionListener {
             }
             if(event.getKeyChar()== 'c'){
                 wV = 1;
+            }
+            if(event.getKeyChar()== 'v'){
+                xV = -1;
+            }
+            if(event.getKeyChar()== 'b'){
+                xV = 1;
+            }
+            if(event.getKeyChar()== 'h'){
+                yV = -1;
+            }
+            if(event.getKeyChar()== 'n'){
+                yV = 1;
             }
         }
 
@@ -74,6 +85,23 @@ public class Contents extends JPanel implements ActionListener {
             if(event.getKeyChar()== 'c'){
                 wV = 0;
             }
+            if(event.getKeyChar()== 'v'){
+//                xV = -1;
+                xV = 0;
+            }
+            if(event.getKeyChar()== 'b'){
+//                xV = 1;
+                xV = 0;
+            }
+            if(event.getKeyChar()== 'h'){
+//                yV = -1;
+                yV = 0;
+            }
+            if(event.getKeyChar()== 'n'){
+//                yV = 1;
+                yV = 0;
+
+            }
         }
 
         public void keyTyped(KeyEvent event) {
@@ -84,6 +112,20 @@ public class Contents extends JPanel implements ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
+
+
+        g2d.drawString("CONTROLS:", 775, 15);
+        g2d.drawString("A: Decrease Size", 775, 30);
+        g2d.drawString("S: Increase Size", 775, 45);
+        g2d.drawString("Z: Move Left", 775, 60);
+        g2d.drawString("X: Move Right", 775, 75);
+        g2d.drawString("D: Move Up", 775, 90);
+        g2d.drawString("C: Move Down", 775, 105);
+        g2d.drawString("B: Move/Drag Left", 775, 120);
+        g2d.drawString("N: Move/Drag Right", 775, 135);
+        g2d.drawString("H: Move/Drag Up", 775, 150);
+        g2d.drawString("N: Move/Drag Down", 775, 165);
+
 
 
         g2d.drawLine(x, y, v, w);
@@ -121,6 +163,8 @@ public class Contents extends JPanel implements ActionListener {
         if((x - v) >= a/2){
             v = (x - a/2);
             isTrue = true;
+        } else {
+            isTrue = false;
         }
 
         if((w - y) >= a/2)
