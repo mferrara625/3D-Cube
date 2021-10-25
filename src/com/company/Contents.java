@@ -121,8 +121,8 @@ public class Contents extends JPanel implements ActionListener {
         g2d.drawString("X: Move Right", 775, 75);
         g2d.drawString("D: Move Up", 775, 90);
         g2d.drawString("C: Move Down", 775, 105);
-        g2d.drawString("B: Move/Drag Left", 775, 120);
-        g2d.drawString("N: Move/Drag Right", 775, 135);
+        g2d.drawString("V: Move/Drag Left", 775, 120);
+        g2d.drawString("B: Move/Drag Right", 775, 135);
         g2d.drawString("H: Move/Drag Up", 775, 150);
         g2d.drawString("N: Move/Drag Down", 775, 165);
 
@@ -132,7 +132,7 @@ public class Contents extends JPanel implements ActionListener {
         g2d.drawLine(x, y + a, v, w + a);
         g2d.drawLine(x + a, y, v + a, w);
         g2d.drawLine(x + a, y + a, v + a, w + a);
-        g2d.drawRect(x, y, a, a);
+        g2d.fillRect(x, y, a, a);
         g2d.drawRect(v, w, a, a);
 
 
