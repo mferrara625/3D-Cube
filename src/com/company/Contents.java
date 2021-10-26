@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 
 public class Contents extends JPanel implements ActionListener {
 
-    static int a = 50, b = 50, v = 375, w = 225, x = 350, y = 200 ;
+    static int a = 50, b = 50, c = 400, d = 400, v = 375, w = 225, x = 350, y = 200 ;
     static boolean isTrue = false;
 
     private Timer t;
@@ -60,6 +60,18 @@ public class Contents extends JPanel implements ActionListener {
             if(event.getKeyChar()== 'n'){
                 yV = 1;
             }
+            if(event.getKeyChar()== 'j'){
+                cV = -1;
+            }
+            if(event.getKeyChar()== 'l'){
+                cV = 1;
+            }
+            if(event.getKeyChar()== 'i'){
+                dV = -1;
+            }
+            if(event.getKeyChar()== 'k'){
+                dV = 1;
+            }
         }
 
         public void keyReleased(KeyEvent event) {
@@ -102,6 +114,18 @@ public class Contents extends JPanel implements ActionListener {
                 yV = 0;
 
             }
+            if(event.getKeyChar()== 'j'){
+                cV = 0;
+            }
+            if(event.getKeyChar()== 'l'){
+                cV = 0;
+            }
+            if(event.getKeyChar()== 'i'){
+                dV = 0;
+            }
+            if(event.getKeyChar()== 'k'){
+                dV = 0;
+            }
         }
 
         public void keyTyped(KeyEvent event) {
@@ -127,13 +151,16 @@ public class Contents extends JPanel implements ActionListener {
         g2d.drawString("N: Move/Drag Down", 775, 165);
 
 
+        for(int i = 0; i < 5; i++) {
+            g2d.drawLine(x + (a * i) , y, v+ (a * i), w);
+            g2d.drawLine(x + (a * i), y + a, v+ (a * i), w + a);
+            g2d.drawLine(x + a + (a * i), y, v + a+ (a * i), w);
+            g2d.drawLine(x + a + (a * i), y + a, v + a+ (a * i), w + a);
+            g2d.drawRect(x + (a * i), y, a, a);
+            g2d.drawRect(v + (a * i), w, a, a);
+        }
 
-        g2d.drawLine(x, y, v, w);
-        g2d.drawLine(x, y + a, v, w + a);
-        g2d.drawLine(x + a, y, v + a, w);
-        g2d.drawLine(x + a, y + a, v + a, w + a);
-        g2d.fillRect(x, y, a, a);
-        g2d.drawRect(v, w, a, a);
+//        g2d.drawOval(c,d,15,15);
 
 
         g2d.drawString("test: " + isTrue, 10, 10);
@@ -141,12 +168,16 @@ public class Contents extends JPanel implements ActionListener {
 
     }
 
+    public static int cV = 0;
+    public static int dV = 0;
     public static int vV = 0;
     public static int wV = 0;
     public static int xV = 0;
     public static int yV = 0;
 
     public void move(){
+        c = c + cV;
+        d = d + dV;
         v = v + vV;
         w = w + wV;
         x = x + xV;
@@ -173,6 +204,9 @@ public class Contents extends JPanel implements ActionListener {
         if((y - w) >= a/2)
             w = (y - a/2);
 
+
+        if(c >= x - 15 && c <= x + a && d <= y + a && d >= y)
+            c = x -15;
 
             repaint();
     }
